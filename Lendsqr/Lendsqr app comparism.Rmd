@@ -1,0 +1,248 @@
+---
+title: "Lendsqr"
+author: "Obiora Chiemerie Martins"
+date: "`r Sys.Date()`"
+output: word_document
+---
+
+***
+## Comparing Irorun and A1Credit
+```{r Loading packages, include=FALSE}
+library(readxl)
+library(tidyverse)
+library(janitor)
+library(gt)
+library(knitr)
+library(tinytex)
+```
+
+follow this [link](https://drive.google.com/drive/folders/19a83WcYMWx6sYNN2z7A6KexnCCcFRxnh?usp=drive_link) to access the dataset used for this report
+```{r Importing datasets, echo=FALSE}
+A1Credit_App <- read_excel("~/A1Credit.xlsx")
+IRORUN_WEB_APP <- read_excel("~/IRORUN WEB APP.xlsx")
+IRORUN_App <- read_excel("~/IRORUN App.xlsx")
+```
+
+
+***
+
+### Loaning from A1Credit or Irorun
+
+[A1Credits](https://a1creditng.com/index) and [Irorun](https://irorun.com/) are both financial institutions owned by Lendsqr.
+
+* A1Credit is Lendsqr platform for lending large amount to borrowers up to ₦500,000. From the perspective of a typical Nigerian borrowers, A1Credit loan large money. If I am to borrow huge amount of money from financial institutions A1credit is where I will go to.
+
+* Irorun is Lendsqr platform for lending to regular Nigerian borrowers up to ₦20,000 maximum. From the perspective of a typical Nigerian borrowers, Irorun loan small money that should be suitable to solve short term problems. If I am to borrow a small amount of money from financial institutions Irorun is where I will go to.
+
++ Irorun lending products differs according to the point of accessing the platform. Irorun is accessible as a web app and as a mobile app available on Google playstore.
+
+___Continue reading to see the different products offered by A1Credit and Irorun, and their requirements for validating loan.___
+
+***
+
+#### What are the requirements for loaning from either A1Credit or Irorun?
+
+Irorun                      A1Credit
+-------                     ---------
+Provide next of kin         Personal details
+Updated address             Employment details
+Valid government-issued ID  Functional debit card
+Debit card                   
+
+***
+
+#### Comparing the products offered A1Credit and Irorun
+
+```{r Cleaning and wrangling A1Credit dataframe, include=FALSE}
+A1Credit_App.1 <- A1Credit_App %>% 
+  separate(Amount, into = c("Min loan Amount", "Max loan Amount"), sep = " to ") %>% 
+  separate(`Loan Duration`, into = c("Min loan_duration", "Max loan duration"), sep = " to ") %>% 
+  mutate(`Min loan duration` = c("7 days", "1 months", "1 months")) %>%
+  mutate(product_id = c(101, 102, 103)) %>% 
+  select(Products, product_id, `Min loan Amount`, `Max loan Amount`, `Min loan duration`, `Max loan duration`, `Interest per month (%)`, `Processing Fee (%)`, `Repayment frequency`)
+```
+
+```{r Cleaning and wrangling Irorun mobile app dataset, include=FALSE}
+IRORUN_App.1 <- IRORUN_App %>% 
+  separate(Amount, into = c("Min loan Amount", "Max loan Amount"), sep = " to ") %>% 
+  separate(`Loan Duration`, into = c("Min loan duration (days)", "Max loan duration (days)"), sep = " to ") %>% 
+  mutate(product_id = c(101, 102, 103, 104))
+```
+
+```{r Cleaning and wrangling Irorun web app dataset, include=FALSE}
+IRORUN_WEB_APP.1 <- IRORUN_WEB_APP %>%
+  rename(Products = Product) %>% 
+  separate(Amount, into = c("Min loan Amount", "Max loan Amount"), sep = " to ") %>% 
+  separate(`Loan  duration (days)`, into = c("Min loan duration (days)", "Max loan duration (days)"), sep = " to ") %>% 
+  mutate(product_id = c(101, 102, 103, 104))
+```
+
+##### Using tables
+```{r gt_Irorun app, echo=FALSE}
+IRORUN_App.1 %>%
+  select(-product_id) %>% gt() %>% 
+  tab_header(title = "Products of Irorun (mobile app)") %>% 
+  tab_style(style = list(cell_borders(style = "solid")),
+            locations = cells_body(columns = c(Products, `Min loan duration (days)`, `Max loan duration (days)`, `Repayment Frequency`, `No. of Prerequisite Loan`, `Customer's Class`))
+            ) %>% 
+  tab_style(style = list(cell_fill(color = "#a2d0ef"), 
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Min loan Amount`, `Max loan Amount`))
+            ) %>% 
+  tab_style(style = list(cell_text(weight = "bolder")),
+            locations = cells_body(columns = Products)) %>% 
+  tab_style(style = list(cell_fill(color = "#afefb8"),
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Interest (%)`, `Processing Fee`))
+            )
+```
+
+Downloading Irorun mobile app from Google playstore provides new user with the privilege of borrowing up to ₦5,000 at an interest of 15% with ₦100 processing fee. The loan is to be repaid 3 to 15 days after borrowing. For Nigerians, this is a medium to responsibly get __urgent 5k__, and it's available for everyone.
+
+After 2 successful loans, Nigerian users can borrow up to ₦10,000 at a processing fee as low as 10% to be repaid 7 to 15 days after loaning. 
+
+Irorun Easy credit loyalty provides specifically to their __loyal Android users__ to borrow up to ₦20,000 to repay in 30 days.
+
+***
+
+```{r Irorun web app, echo=FALSE}
+IRORUN_WEB_APP.1 %>%
+  select(-product_id) %>% gt() %>% 
+  tab_header(title = "Products of Irorun (web app)") %>% 
+  tab_style(style = list(cell_borders(style = "solid")),
+            locations = cells_body(columns = c(Products, `Min loan duration (days)`, `Max loan duration (days)`, `Repayment frequency`, `Prerequisite loan`))
+            ) %>% 
+  tab_style(style = list(cell_fill(color = "#b2d0d5"), 
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Min loan Amount`, `Max loan Amount`))
+            ) %>% 
+  tab_style(style = list(cell_text(weight = "bolder")),
+            locations = cells_body(columns = Products)) %>% 
+  tab_style(style = list(cell_fill(color = "#cfef7a"),
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Interest per month (%)`, `Processing fee`))
+            )
+```
+
+Loaning from Irorun web app provides new user with an opportunity of borrowing up to ₦10,000 at an interest of 15% with ₦400 processing fee to repay in 15 days.
+
+After 2 successful loans, the Easy credit loyalty product provides Nigerian users can borrow up to ₦20,000 at a processing fee of ₦400 to be repay in 30 days.
+
+After 5 successful loans, Irorun Easy credit supreme and Easy credit free provides borrowers with the opportunity to borrow up to ₦50,000 to repay in 30 days. Easy credit supreme comes with an interest of 10% while Easy credit free has __zero interest__.
+
+***
+
+```{r A1Credit, echo=FALSE}
+A1Credit_App.1 %>%
+  select(-product_id) %>% 
+  gt() %>% 
+  tab_header(title = "Products of A1Credit") %>% 
+  tab_style(style = list(cell_borders(style = "solid")),
+            locations = cells_body(columns = c(Products, `Min loan duration`, `Max loan duration`, `Repayment frequency`))
+            ) %>% 
+  tab_style(style = list(cell_fill(color = "#c2d05f"), 
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Min loan Amount`, `Max loan Amount`))
+            ) %>% 
+  tab_style(style = list(cell_text(weight = "bolder")),
+            locations = cells_body(columns = Products)) %>% 
+  tab_style(style = list(cell_fill(color = "#e3a35c"),
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`Interest per month (%)`, `Processing Fee (%)`))
+            )
+```
+
+A1Credit app from Google playstore provides borrowers with the privilege of borrowing a minimum of ₦5,000 up to a maximum loan amount of ₦500,000 at different interest rate and processing fee. 
+
+From the table showing the products of A1Credit, __A1Credit Freedom-Manual__ provides loans to borrowers at an interest of 7% with a __0%__ processing fee to repaid in 3 months.
+
+
+```{r, include=FALSE}
+comparison_df <- full_join(A1Credit_App.1, IRORUN_App.1, by = "product_id") %>%
+  full_join(., IRORUN_WEB_APP.1, by = "product_id")
+```
+
+```{r, include=FALSE}
+comparison_df <- comparison_df %>%
+  rename(`A1Credit interest rate` = `Interest per month (%).x`,
+         `Irorun mobile app interest rate` = `Interest (%)`,
+         `Irorun web app interest rate` = `Interest per month (%).y`) %>% 
+  rename(`Products of A1Credit` = Products.x,
+         `Products of Irorun (mobile app)` = Products.y,
+         `Products of Irorun (web app)` = Products) %>% 
+  rename(`A1Credit app processing fee (%)` = `Processing Fee (%)`,
+         `Irorun mobile app processing fee` = `Processing Fee`,
+         `Irorun web app processing fee (₦)` = `Processing fee`)
+```
+
+***
+#### Findings
+
+As seen from the above tables, A1Credit provides borrowers large sum of loan with relatively low interest rate. A1Credit requires some specific documents which may be very difficult to be provided by a regular Nigerian borrower. Irorun on the other provides optimum loan to borrowers with interest rate as high as 15% but has minimum documents for validating loans. Irorun web app have different products from Irorun mobile app but has a steady processing fee of ₦400.
+
+* A1Credit is suitable for large borrower like for business start ups. It is basically to take care of long term needs.
+
+* Irorun is suitable for small borrowers probably to take care of short term problems. 
+
+__Irorun__ comes with a higher interest rate compared to __A1Credit__.
+
+.
+
+#### Strength
+
+Irorun                                                        A1Credit
+------------------------------------------------------        ---------------------------------------------------------------
+Suitable for regular Nigerian that require urgent fund        Suitable for large borrowers like business start ups in Nigeria
+Requires minimal amount of documents before validating loan   Provides borrowers with sufficient time for repay.
+Provides a __Refer and Earn__ for users
+
+.
+
+#### Weakness
+
+Irorun                                                        A1Credit
+------------------------------------------------------        ---------------------------------------------------------------
+It is not suitable for large borrowers                        Not suitable for small borrowers
+Has a high interest rate and Processing fee                   Not all Nigerians can easily provide the documents required for validating loans
+
+***
+
+#### How can Irorun improve?
+1. Irorun can improve the satisfaction of Nigerian borrowers by reducing the processing fee for the products offered on the mobile app.
+2. There should be products that provides Irorun borrowers the privilege of borrowing large sum.
+
+```{r Summary of products, echo=FALSE}
+comparison_df %>%
+  select(`Products of A1Credit`,
+         `Products of Irorun (mobile app)`,
+         `Products of Irorun (web app)`,
+         `A1Credit interest rate`,
+         `Irorun mobile app interest rate`,
+         `Irorun web app interest rate`,
+         `A1Credit app processing fee (%)`,
+         `Irorun mobile app processing fee`,
+         `Irorun web app processing fee (₦)`
+  ) %>%
+  gt() %>%
+  tab_header(title = "Comparison of Loan Products") %>%
+  tab_spanner(label = "Products", columns = c(`Products of A1Credit`, `Products of Irorun (mobile app)`, `Products of Irorun (web app)`)) %>%
+  tab_spanner(label = "Interest Rate", columns = c(`A1Credit interest rate`, `Irorun mobile app interest rate`, `Irorun web app interest rate`)) %>%
+  tab_spanner(label = "Processing Fee", columns = c(`A1Credit app processing fee (%)`, `Irorun mobile app processing fee`, `Irorun web app processing fee (₦)`)) %>%
+  tab_style(
+    style = list(cell_fill(color = "#FFA500"),
+                 cell_text(weight = "bolder")),
+    locations = cells_column_spanners()
+  ) %>%
+  tab_style(style = list(cell_borders(style = "solid")), locations = cells_body(columns = everything())
+            ) %>% 
+  tab_style(style = list(cell_fill(color = "#e3a35c"),
+                         cell_text(weight = "bold"), cell_borders(style = "solid")),
+            locations = cells_body(columns = c(`A1Credit interest rate`, `Irorun mobile app interest rate`, `Irorun web app interest rate`))
+            )
+```
+
+***
+
+5 star for [Irorun mobile app](https://drive.google.com/file/d/1WvJq40LZSnCuB6l2bJpLvSlCTisNkD8d/view?usp=drive_link)
+
+5 star for [A1Credite app](https://drive.google.com/file/d/1OqScQUuw_kBkkDIvHc4B5YJImQyIKi23/view?usp=drive_link)

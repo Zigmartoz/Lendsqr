@@ -1,0 +1,381 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Lendsqr},
+  pdfauthor={Obiora Chiemerie Martins},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Lendsqr}
+\author{Obiora Chiemerie Martins}
+\date{2023-06-15}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.2     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.2     v tibble    3.2.1
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'janitor'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     chisq.test, fisher.test
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gt)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A1Credit\_App }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"\textasciitilde{}/A1Credit.xlsx"}\NormalTok{)}
+\NormalTok{IRORUN\_WEB\_APP }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"\textasciitilde{}/IRORUN WEB APP.xlsx"}\NormalTok{)}
+\NormalTok{IRORUN\_App }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"\textasciitilde{}/IRORUN App.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A1Credit\_App}\FloatTok{.1} \OtherTok{\textless{}{-}}\NormalTok{ A1Credit\_App }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(Amount, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan Amount"}\NormalTok{, }\StringTok{"Max loan Amount"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Duration}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan\_duration"}\NormalTok{, }\StringTok{"Max loan duration"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Min loan duration}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"7 days"}\NormalTok{, }\StringTok{"1 months"}\NormalTok{, }\StringTok{"1 months"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{product\_id =} \FunctionTok{c}\NormalTok{(}\DecValTok{101}\NormalTok{, }\DecValTok{102}\NormalTok{, }\DecValTok{103}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Products, product\_id, }\StringTok{\textasciigrave{}}\AttributeTok{Min loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Min loan duration}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan duration}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Interest per month (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Processing Fee (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Repayment frequency}\StringTok{\textasciigrave{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IRORUN\_App}\FloatTok{.1} \OtherTok{\textless{}{-}}\NormalTok{ IRORUN\_App }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(Amount, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan Amount"}\NormalTok{, }\StringTok{"Max loan Amount"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Duration}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan duration (days)"}\NormalTok{, }\StringTok{"Max loan duration (days)"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{product\_id =} \FunctionTok{c}\NormalTok{(}\DecValTok{101}\NormalTok{, }\DecValTok{102}\NormalTok{, }\DecValTok{103}\NormalTok{, }\DecValTok{104}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [4].
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IRORUN\_WEB\_APP}\FloatTok{.1} \OtherTok{\textless{}{-}}\NormalTok{ IRORUN\_WEB\_APP }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Products =}\NormalTok{ Product) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(Amount, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan Amount"}\NormalTok{, }\StringTok{"Max loan Amount"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan  duration (days)}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Min loan duration (days)"}\NormalTok{, }\StringTok{"Max loan duration (days)"}\NormalTok{), }\AttributeTok{sep =} \StringTok{" to "}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{product\_id =} \FunctionTok{c}\NormalTok{(}\DecValTok{101}\NormalTok{, }\DecValTok{102}\NormalTok{, }\DecValTok{103}\NormalTok{, }\DecValTok{104}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-tables}{%
+\section{Creating tables}\label{creating-tables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IRORUN\_App}\FloatTok{.1} \SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{product\_id) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Products of Irorun (mobile app)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(Products, }\StringTok{\textasciigrave{}}\AttributeTok{Min loan duration (days)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan duration (days)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Repayment Frequency}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{No. of Prerequisite Loan}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Customer\textquotesingle{}s Class}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#a2d0ef"}\NormalTok{), }
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Min loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan Amount}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bolder"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Products)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#afefb8"}\NormalTok{),}
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Interest (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Processing Fee}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{lrrrrrllrl}
+\caption*{
+{\large Products of Irorun (mobile app)}
+} \\ 
+\toprule
+Products & Min loan Amount & Max loan Amount & Min loan duration (days) & Max loan duration (days) & Interest (\%) & Processing Fee & Repayment Frequency & No. of Prerequisite Loan & Customer's Class \\ 
+\midrule
+Easy credit starter & 1,000 & 5,000 & 3 & 15 & 15 & 100 Naira & Daily & 0 & Everyone \\ 
+Easy credit & 1,000 & 10,000 & 7 & 15 & 15 & 10\% & Daily & 2 & Everyone \\ 
+Easy credit Loyalty & 1,000 & 20,000 & 7 & 30 & 10 & 10\% & Daily & 2 & Loyal android customers \\ 
+Refer and Earn & 100 & NA & NA & NA & NA & NA & NA & NA & NA \\ 
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IRORUN\_WEB\_APP}\FloatTok{.1} \SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{product\_id) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Products of Irorun (web app)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(Products, }\StringTok{\textasciigrave{}}\AttributeTok{Min loan duration (days)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan duration (days)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Repayment frequency}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Prerequisite loan}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#b2d0d5"}\NormalTok{), }
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Min loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan Amount}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bolder"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Products)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#cfef7a"}\NormalTok{),}
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Interest per month (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Processing fee}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{lrrrrrrlr}
+\caption*{
+{\large Products of Irorun (web app)}
+} \\ 
+\toprule
+Products & Min loan Amount & Max loan Amount & Interest per month (\%) & Min loan duration (days) & Max loan duration (days) & Processing fee & Repayment frequency & Prerequisite loan \\ 
+\midrule
+Easy credit & 5,000 & 10,000 & 15 & 7 & 15 & 400 & Daily & 0 \\ 
+Easy credit loyalty & 5,000 & 20,000 & 10 & 7 & 30 & 400 & Daily & 2 \\ 
+Easy credit supreme & 5,000 & 50,000 & 10 & 7 & 30 & 400 & Daily & 5 \\ 
+Easy credit free & 5000 & - & 0 & 7 & - & 400 & Daily & 5 \\ 
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A1Credit\_App}\FloatTok{.1} \SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{product\_id) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Products of A1Credit"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(Products, }\StringTok{\textasciigrave{}}\AttributeTok{Min loan duration}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan duration}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Repayment frequency}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#c2d05f"}\NormalTok{), }
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Min loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Max loan Amount}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bolder"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Products)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#e3a35c"}\NormalTok{),}
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Interest per month (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Processing Fee (\%)}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{lrrllrrl}
+\caption*{
+{\large Products of A1Credit}
+} \\ 
+\toprule
+Products & Min loan Amount & Max loan Amount & Min loan duration & Max loan duration & Interest per month (\%) & Processing Fee (\%) & Repayment frequency \\ 
+\midrule
+A1Credit Advance & 5,000 & 10,000 & 7 days & 14 days & 5.5 & 10 & Daily \\ 
+A1Credit Freedom & 50,000 & 1000,000 & 1 months & 3 months & 7.0 & 1 & Daily \\ 
+A1Credit Freedom-Manual & 5,000 & 500,000 & 1 months & 3 months & 7.0 & 0 & Daily \\ 
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison\_df }\OtherTok{\textless{}{-}} \FunctionTok{full\_join}\NormalTok{(A1Credit\_App}\FloatTok{.1}\NormalTok{, IRORUN\_App}\FloatTok{.1}\NormalTok{, }\AttributeTok{by =} \StringTok{"product\_id"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(., IRORUN\_WEB\_APP}\FloatTok{.1}\NormalTok{, }\AttributeTok{by =} \StringTok{"product\_id"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison\_df }\OtherTok{\textless{}{-}}\NormalTok{ comparison\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{A1Credit interest rate}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Interest per month (\%).x}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app interest rate}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Interest (\%)}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun web app interest rate}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Interest per month (\%).y}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Products of A1Credit}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ Products.x,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (mobile app)}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ Products.y,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (web app)}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ Products) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{A1Credit app processing fee (\%)}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Processing Fee (\%)}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app processing fee}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Processing Fee}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun web app processing fee (₦)}\StringTok{\textasciigrave{}} \OtherTok{=} \StringTok{\textasciigrave{}}\AttributeTok{Processing fee}\StringTok{\textasciigrave{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Products of A1Credit}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (mobile app)}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (web app)}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{A1Credit interest rate}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app interest rate}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun web app interest rate}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{A1Credit app processing fee (\%)}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app processing fee}\StringTok{\textasciigrave{}}\NormalTok{,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Irorun web app processing fee (₦)}\StringTok{\textasciigrave{}}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Comparison of Loan Products"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Products"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Products of A1Credit}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (mobile app)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Products of Irorun (web app)}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Interest Rate"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{A1Credit interest rate}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app interest rate}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun web app interest rate}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Processing Fee"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{A1Credit app processing fee (\%)}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app processing fee}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun web app processing fee (₦)}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_style}\NormalTok{(}
+    \AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#FFA500"}\NormalTok{),}
+                 \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bolder"}\NormalTok{)),}
+    \AttributeTok{locations =} \FunctionTok{cells\_column\_spanners}\NormalTok{()}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)), }\AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{everything}\NormalTok{())}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tab\_style}\NormalTok{(}\AttributeTok{style =} \FunctionTok{list}\NormalTok{(}\FunctionTok{cell\_fill}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#e3a35c"}\NormalTok{),}
+                         \FunctionTok{cell\_text}\NormalTok{(}\AttributeTok{weight =} \StringTok{"bold"}\NormalTok{), }\FunctionTok{cell\_borders}\NormalTok{(}\AttributeTok{style =} \StringTok{"solid"}\NormalTok{)),}
+            \AttributeTok{locations =} \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{A1Credit interest rate}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun mobile app interest rate}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Irorun web app interest rate}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{            )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{lllrrrrlr}
+\caption*{
+{\large Comparison of Loan Products}
+} \\ 
+\toprule
+\multicolumn{3}{c}{Products} & \multicolumn{3}{c}{Interest Rate} & \multicolumn{3}{c}{Processing Fee} \\ 
+\cmidrule(lr){1-3} \cmidrule(lr){4-6} \cmidrule(lr){7-9}
+Products of A1Credit & Products of Irorun (mobile app) & Products of Irorun (web app) & A1Credit interest rate & Irorun mobile app interest rate & Irorun web app interest rate & A1Credit app processing fee (\%) & Irorun mobile app processing fee & Irorun web app processing fee (₦) \\ 
+\midrule
+A1Credit Advance & Easy credit starter & Easy credit & 5.5 & 15 & 15 & 10 & 100 Naira & 400 \\ 
+A1Credit Freedom & Easy credit & Easy credit loyalty & 7.0 & 15 & 10 & 1 & 10\% & 400 \\ 
+A1Credit Freedom-Manual & Easy credit Loyalty & Easy credit supreme & 7.0 & 10 & 10 & 0 & 10\% & 400 \\ 
+NA & Refer and Earn & Easy credit free & NA & NA & 0 & NA & NA & 400 \\ 
+\bottomrule
+\end{longtable}
+
+\end{document}
